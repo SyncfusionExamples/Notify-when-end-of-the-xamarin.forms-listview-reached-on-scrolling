@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:local="clr-namespace:GettingStarted"
+             x:Class="GettingStarted.MainPage">
+
+  <ContentPage.BindingContext>
+    <local:ViewModel />
+  </ContentPage.BindingContext>
+
+  <sync:SfListView x:Name="listView" ItemsSource="{Binding BookInfo}" ItemSize="100">
+        <sync:SfListView.Behaviors>
+            <local:Behavior/>
+        </sync:SfListView.Behaviors>
+    <sync:SfListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <ViewCell.View>
+        <StackLayout Orientation="Vertical">
+          <Label Text="{Binding BookName}" FontAttributes="Bold" TextColor="Teal">
+            <Label.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <OnPlatform.WinPhone>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="21" Tablet="22" />
+                </OnPlatform.WinPhone>
+                <OnPlatform.Android>
+                  <OnIdiom x:TypeArguments="x:Double"
+                           Phone="20"
+                           Tablet="22" />
+                </OnPlatform.Android>
+                <OnPlatform.iOS>
+                  <OnIdiom x:TypeArguments="x:Double"
+                           Phone="20"
+                           Tablet="22" />
+                </OnPlatform.iOS>
+              </OnPlatform>
+            </Label.FontSize>
+          </Label>
+
+          <Label Text="{Binding BookDescription}" TextColor="Teal" >
+            <Label.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <OnPlatform.WinPhone>
+                  <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="17" />
+                </OnPlatform.WinPhone>
+                <OnPlatform.Android>
+                  <OnIdiom x:TypeArguments="x:Double"
+                           Phone="14"
+                           Tablet="16" />
+                </OnPlatform.Android>
+                <OnPlatform.iOS>
+                  <OnIdiom x:TypeArguments="x:Double"
+                           Phone="14"
+                           Tablet="16" />
+                </OnPlatform.iOS>
+              </OnPlatform>
+            </Label.FontSize>
+          </Label>
+        </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+      </DataTemplate>
+    </sync:SfListView.ItemTemplate>
+  </sync:SfListView>
+</ContentPage>
